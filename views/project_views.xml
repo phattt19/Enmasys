@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="task2_tree">
+        <field name="name">task2.tree</field>
+        <field name="model">task2.enmasys</field>
+
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="deadline"/>
+                <field name="managers_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="attendee_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="task2_form">
+        <field name="name">task2.form</field>
+        <field name="model">task2.enmasys</field>
+
+        <field name="arch" type="xml">
+            <form string="Project">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"></label>
+                        <h1>
+                            <field name="name"></field>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="status"/>
+                            <field name="assigned_to_id"/>
+                            <field name="managers_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="attendee_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                        </group>
+                        <group>
+                            <field name="deadline"/>
+                            <field name="note"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="task2_action" model="ir.actions.act_window">
+        <field name="name">Project</field>
+        <field name="res_model">task2.enmasys</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Project"
+              id="study_menu_2"
+              parent="study_menu"
+              action="task2_action"
+              groups="base.group_user"/>
+</odoo>

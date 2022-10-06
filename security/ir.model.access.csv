@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_study_user,study.enmasys.user,model_study_enmasys,base.group_user,1,0,0,0
+access_study_admin,study.enmasys.admin,model_study_enmasys,base.group_system,1,1,1,1
+access_study_user_2,study.enmasys.user_2,model_task2_enmasys,base.group_user,1,1,1,1
