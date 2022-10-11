@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record model="ir.ui.view" id="task2_tree">
-        <field name="name">task2.tree</field>
-        <field name="model">task2.enmasys</field>
+        <field name="name">project.study.tree</field>
+        <field name="model">project.study</field>
 
         <field name="arch" type="xml">
             <tree>
@@ -16,8 +16,8 @@
     </record>
 
     <record model="ir.ui.view" id="task2_form">
-        <field name="name">task2.form</field>
-        <field name="model">task2.enmasys</field>
+        <field name="name">project.study.form</field>
+        <field name="model">project.study</field>
 
         <field name="arch" type="xml">
             <form string="Project">
@@ -48,15 +48,19 @@
         </field>
     </record>
 
-    <record id="task2_action" model="ir.actions.act_window">
+    <record id="project_study_action" model="ir.actions.act_window">
         <field name="name">Project</field>
-        <field name="res_model">task2.enmasys</field>
+        <field name="res_model">project.study</field>
         <field name="view_mode">tree,form</field>
     </record>
 
+    <menuitem id="project_study_menu"
+              name="Project Study"
+              groups="base.group_user"/>
+
     <menuitem name="Project"
-              id="study_menu_2"
-              parent="study_menu"
-              action="task2_action"
+              id="project_study_menu_1"
+              parent="project_study_menu"
+              action="project_study_action"
               groups="base.group_user"/>
 </odoo>

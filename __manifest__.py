@@ -1,5 +1,5 @@
 {
-    'name': "EnmasysProjectStudy",
+    'name': "Project_Study",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -24,8 +24,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/users_views.xml',
-        'views/project_views.xml',
+        'views/project_study_views.xml',
     ],
     'installable': True,
     'application': True,
