@@ -9,8 +9,11 @@
                 <field name="name"/>
                 <field name="deadline"/>
                 <field name="assigned_to_id"/>
+                <field name="assignee_update"/>
+                <field name="tags"/>
                 <field name="managers_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="attendee_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="customer_id"/>
                 <field name="status"/>
             </tree>
         </field>
@@ -33,10 +36,13 @@
                         <group>
                             <field name="status"/>
                             <field name="assigned_to_id"/>
+                            <field name="assignee_update"/>
+                            <field name="tags"/>
                             <field name="managers_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <field name="attendee_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                         </group>
                         <group>
+                            <field name="customer_id"/>
                             <field name="deadline"/>
                             <field name="note"/>
                         </group>
