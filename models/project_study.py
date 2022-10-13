@@ -1,4 +1,10 @@
-from odoo import fields, models
+from odoo import fields, models, api
+
+
+class User(models.Model):
+    _inherit = 'res.users'
+
+    x_user_id = fields.Many2one('project.study')
 
 
 class ProjectStudy(models.Model):
@@ -7,7 +13,7 @@ class ProjectStudy(models.Model):
 
     name = fields.Char(string="Name", required=True)
     deadline = fields.Date(string='DeadLine', required=True)
-    assigned_to_id = fields.Many2one('res.users', string='Assigned To')
+    assigned_to_id = fields.Many2one('res.users', string='Assigned To', default=lambda self: self.env.user)
     note = fields.Text(string='Note')
     description = fields.Html(string='Description')
     status = fields.Selection([('todo', 'TODO'),
@@ -25,8 +31,4 @@ class ProjectStudy(models.Model):
     attendee_ids = fields.One2many('res.users', 'x_user_id', string='Task Attendees')
 
 
-class User(models.Model):
-    _inherit = 'res.users'
-
-    x_user_id = fields.Many2one('project.study')
 

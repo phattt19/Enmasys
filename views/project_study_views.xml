@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="task2_tree">
+    <record model="ir.ui.view" id="project_study_tree">
         <field name="name">project.study.tree</field>
         <field name="model">project.study</field>
 
@@ -8,6 +8,7 @@
             <tree>
                 <field name="name"/>
                 <field name="deadline"/>
+                <field name="assigned_to_id"/>
                 <field name="managers_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="attendee_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                 <field name="status"/>
@@ -15,7 +16,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="task2_form">
+    <record model="ir.ui.view" id="project_study_form">
         <field name="name">project.study.form</field>
         <field name="model">project.study</field>
 
@@ -48,6 +49,22 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="project_study_search">
+        <field name="name">project.study.search</field>
+        <field name="model">project.study</field>
+        <field name="arch" type="xml">
+                <search>
+                    <field name="name" placeholder="Name"/>
+                    <field name="assigned_to_id"/>
+                    <filter string="My task" name="my_task" domain="[('assigned_to_id','=', uid)]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Assign to" name="assigned_to_id" context="{'group_by':'assigned_to_id'}"/>
+                        <filter string="Status" name="status" context="{'group_by':'status'}"/>
+                    </group>
+                </search>
+            </field>
+    </record>
+
     <record id="project_study_action" model="ir.actions.act_window">
         <field name="name">Project</field>
         <field name="res_model">project.study</field>
@@ -58,8 +75,8 @@
               name="Project Study"
               groups="base.group_user"/>
 
-    <menuitem name="Project"
-              id="project_study_menu_1"
+    <menuitem id="project_study_menu_1"
+              name="Project"
               parent="project_study_menu"
               action="project_study_action"
               groups="base.group_user"/>
